@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="WebApp_ID" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
 	<display-name>weixinPay</display-name>
-    
+	
+	<!--1、调用支付的主入口-->
 	<servlet>
-		<servlet-name>MainServlet</servlet-name>
+		<servlet-name>mainServlet</servlet-name>
 		<servlet-class>com.wechatpay.servlet.MainServlet</servlet-class>
 	</servlet>
+		<servlet-mapping>
+		<servlet-name>mainServlet</servlet-name>
+		<url-pattern>/pay</url-pattern>
+	</servlet-mapping>
+	
+	<!--2、微信回调的接口(用于支付)-->
 	<servlet>
 		<servlet-name>TopayServlet</servlet-name>
 		<servlet-class>com.wechatpay.servlet.TopayServlet</servlet-class>
 	</servlet>
-
-
-	<servlet-mapping>
-		<servlet-name>MainServlet</servlet-name>
-		<url-pattern>/mainServlet</url-pattern>
-	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>TopayServlet</servlet-name>
 		<url-pattern>/topayServlet</url-pattern>
 	</servlet-mapping>
-
+	
+	<!--3、微信回调的接口(用户提现) -->
+	<servlet>
+		<servlet-name>ApplyCash</servlet-name>
+		<servlet-class>com.wechatpay.servlet.ApplyCash</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApplyCash</servlet-name>
+		<url-pattern>/applyCash</url-pattern>
+	</servlet-mapping>
+	
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

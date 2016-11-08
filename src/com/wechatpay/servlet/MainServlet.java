@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.wechatpay.util.MPConfigUtils;
 
+/**
+ * 调用这个servlet用于支付
+ * @author zhangWenchao
+ *
+ */
 public class MainServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 3680084802350647841L;
